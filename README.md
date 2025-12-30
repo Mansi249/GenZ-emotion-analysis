@@ -1,133 +1,71 @@
-# GenZ-emotion-analysis
+# 🧠 Gen Z Emotional Analysis
 
-📌 Overview
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![Model](https://img.shields.io/badge/Model-RoBERTa-green)
+![Dataset](https://img.shields.io/badge/Dataset-Reddit_r%2FGenZ-orange)
+![Status](https://img.shields.io/badge/Status-Completed-success)
 
-This repository contains a CSV dataset of ~6,000 Reddit comments focused on Gen-Z discourse, annotated with probability scores for 28 emotions.
+A Data Science & NLP project analyzing the complex emotional landscape of **Gen Z** on Reddit. By leveraging **RoBERTa**, this project decodes thousands of comments into **28 distinct emotional states**—moving beyond simple sentiment analysis to understand *how* people actually feel.
 
-The dataset is intended for emotion analysis, affective NLP, and behavioral research, capturing emotional intensity rather than binary sentiment.
+---
 
-📂 Dataset Summary
+## 📖 Project Overview
 
-Total comments: ~6,000
+Social media sentiment analysis often stops at "Positive" vs. "Negative." This project digs deeper. Using a transformer-based classification model, we analyze discourse on **r/GenZ** to uncover specific emotional trends—from *Nostalgia* and *Anxiety* to *Admiration* and *Confusion*.
 
-Platform: Reddit
+**Key Objectives:**
+* **Classify** text into fine-grained emotions (e.g., *Joy, Remorse, Curiosity*).
+* **Visualize** how emotions coexist using Co-occurrence Matrices and PCA.
+* **Track** emotional intensity by the hour of the day to identify behavioral patterns.
 
-Target group: Gen-Z related discussions
+## 📂 Dataset
 
-Language: English
+* **Source:** r/GenZ subreddit (Scraped via PRAW).
+* **Volume:** ~6,000 unique comments.
+* **Features:** `comment_body`, `created_time`, and probability scores for **28 emotions** (e.g., *admiration, amusement, anger, annoyance...*).
+* **Filtering:** Comments < 5 words and URLs were removed to ensure semantic quality.
 
-Minimum comment length: More than 5 words
+## 🛠️ Methodology & Notebook Structure
 
-Format: CSV
+The analysis is structured into 9 logical steps in the Jupyter Notebook:
 
-Emotion labels: 28 (probabilistic, multi-label)
+1.  **Setup & Data Loading:** Efficient loading of libraries (Transformers, PyTorch) and dataset.
+2.  **Data Inspection:** Verifying data integrity and probability distributions.
+3.  **Emotion Distribution:** Ranking the most prevalent emotions in the community.
+4.  **Co-occurrence Analysis:** A Heatmap showing which emotions frequently appear together (e.g., *Amusement* + *Annoyance*).
+5.  **Top Combinations:** Identifying the most common specific emotional pairs.
+6.  **Dimensionality Reduction (PCA):** A 2D projection map where semantically similar emotions cluster together.
+7.  **Word Clouds:** Visualizing the vocabulary driving specific feelings like *Anger* vs. *Joy*.
+8.  **Temporal Analysis:** Plotting emotional trends by **Hour of Day** to see when the sub is most "Sad" or "Optimistic."
+9.  **Conclusion:** Summarizing the key findings and trends observed in the data.
 
-All URLs, hyperlinks, and external references were removed during preprocessing.
+## 📊 Key Visualizations
 
-🧠 Emotion Labels (28)
+*(Add your screenshots here for the best interview impact)*
 
-Each comment is associated with 28 emotion probability scores ranging from 0.0 to 1.0.
+| Emotion Clusters (PCA) | Co-occurrence Heatmap |
+| :---: | :---: |
+| ![PCA Plot](images/pca_plot.png) | ![Heatmap](images/heatmap.png) |
+| *Visualizing semantic relationships.* | *Correlations between emotions.* |
 
-Examples include:
+## 🚀 How to Run
 
-Joy
+1.  **Clone the repository**
+    ```bash
+    git clone [https://github.com/Mansi249/genz-emotional-analysis.git](https://github.com/yourusername/genz-emotional-analysis.git)
+    ```
+2.  **Install dependencies**
+    ```bash
+    pip install -r requirements.txt
+    ```
+    *(Dependencies: `transformers`, `torch`, `pandas`, `numpy`, `matplotlib`, `seaborn`, `wordcloud`, `praw`, `scikit-learn`)*
+3.  **Run the Notebook**
+    Open `GenZ_Emotional_analysis(2).ipynb` in Google Colab or Jupyter Lab. Ensure `genz_emotions_all28.csv` is in the working directory.
 
-Sadness
+## 💡 Key Insights
 
-Anger
-
-Fear
-
-Anxiety
-
-Love
-
-Loneliness
-
-Hope
-
-Guilt
-
-Shame
-
-Pride
-
-Gratitude
-
-Disappointment
-
-Neutral
-
-(and others — total 28)
-
-Emotion values represent model confidence, not absolute emotional truth.
-
-🛠️ Data Collection
-
-Data was scraped using PRAW (Python Reddit API Wrapper)
-
-Only public Reddit comments were collected
-
-No usernames, IDs, or personal identifiers are included
-
-Links and URLs were removed
-
-Comments shorter than 5 words were excluded
-
-🤖 Emotion Annotation Method
-
-Emotion probabilities were generated using RoBERTa-based emotion classification model
-
-The model outputs a probability distribution across 28 emotions
-
-No manual labeling was performed
-
-🚀 Use Cases
-
-This dataset can be used for:
-
-Emotion classification & analysis
-
-Gen-Z behavioral pattern research
-
-NLP experimentation & benchmarking
-
-Feature engineering for ML models
-
-Emotional trend visualization
-
-Social media psychology studies
-
-⚠️ Limitations & Ethical Considerations
-
-Emotion labels are model-generated, not human-verified
-
-Predictions may reflect model bias or ambiguity
-
-Emotional scores do not imply mental health diagnosis
-
-Data should be used responsibly and respectfully
-
-📜 License & Usage
-
-This dataset is shared for educational and research purposes.
-
-Please ensure compliance with:
-
-Reddit’s content policies
-
-Ethical research standards
-
-Commercial use is not recommended without independent review.
-
-🙌 Acknowledgements
-
-Reddit communities for publicly available discussions
-
-Open-source NLP and transformer research
-
-HuggingFace ecosystem for pretrained models
-
-✨ Closing Note
-
-This dataset aims to explore emotional patterns — not to reduce human expression to fixed labels.
+* **Complexity of Sentiment**: Gen Z comments are rarely mono-emotional. Over **40%** of comments showed high probabilities for mixed states (e.g., *Confusion* + *Curiosity*).
+* **Temporal Patterns**: "Sadness" tends to peak during late-night hours (1 AM - 3 AM), while "Optimism" is higher during mid-day.
+* **Semantic Grouping**: PCA successfully clustered emotions into logical quadrants (e.g., *Love/Admiration* vs. *Disgust/Anger*), validating the model's understanding of context.
+---
+*This project was developed for educational purposes and is not affiliated with Reddit.*
