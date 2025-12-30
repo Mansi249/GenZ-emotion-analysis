@@ -41,8 +41,6 @@ The analysis is structured into 9 logical steps in the Jupyter Notebook:
 
 ## 📊 Key Visualizations
 
-*(Add your screenshots here for the best interview impact)*
-
 | Emotion Clusters (PCA) | Co-occurrence Heatmap |
 | :---: | :---: |
 | ![PCA Plot](images/pca_plot.png) | ![Heatmap](images/heatmap.png) |
